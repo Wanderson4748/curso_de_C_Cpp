@@ -1,6 +1,11 @@
-#include <stdio.h>  //
-#include <stdlib.h> //
-#include <time.h>   //
+#include <stdio.h>
+// Standard Input/Output
+
+#include <stdlib.h>
+// Standard Library. Oferece funções para manipulação de memória, conversões e controle de programas.
+
+#include <time.h>
+// Time Library
 
 int main()
 {
@@ -51,7 +56,7 @@ int main()
         break;
     }
 
-    //
+    // A estrutura de repetição responsável por rodar o jogo em cada tentativa
     for (int i = 1; i <= numero_de_tentativas; i++)
     {
 
@@ -66,9 +71,10 @@ int main()
         {
             printf("Você não pode chutar números negativos!\n");
 
-            continue;
+            continue; // Reinicia o for sem contabilizar tentativa
         }
 
+        // Variaveis com valor do chute maior e menor que o numero secreto
         int maior = (chute > numero_secreto);
         int menor = (chute < numero_secreto);
 
@@ -87,14 +93,14 @@ int main()
             printf("Seu chute foi menor que o número secreto!\n");
         }
 
-        tentativas++;
+        tentativas++; // adiciona uma tentativa a variavel numero_tentativas
 
-        double pontosperdidos = abs(chute - numero_secreto) / (double)2;
+        double pontosperdidos = abs(chute - numero_secreto) / (double)2; // Calculo do pontos perdidos
 
-        pontos = pontos - pontosperdidos;
+        pontos = pontos - pontosperdidos; // Total de pontos
     }
 
-    printf("Fim de jogo!\n");
+    printf("Fim de jogo!\n"); // Mensagem de fim de jogo
 
     if (acertou)
     {
