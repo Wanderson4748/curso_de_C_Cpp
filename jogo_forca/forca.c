@@ -10,8 +10,7 @@ int main() {
     int acertou = 0;
     int enforcou = 0;
 
-    do
-    {
+    do {
         char chute;
         scanf("&c", &chute);
 
