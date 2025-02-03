@@ -1,7 +1,8 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 
-int main() {
+int main()
+{
 
     char palavra_secreta[20];
 
@@ -10,15 +11,40 @@ int main() {
     int acertou = 0;
     int enforcou = 0;
 
-    do {
-        char chute;
-        scanf("&c", &chute);
+    char chutes[26];
+    int tentativas = 0;
 
-        for(int i = 0; i < strlen(palavra_secreta); i++) {
-            if(palavra_secreta[i] == chute) {
-                printf("A posição %d tem essa letra!\n", i);
+    do
+    {
+        for (int i = 0; i < strlen(palavra_secreta); i++)
+        {
+
+            int achou = 0;
+
+            for (int j = 0; j < tentativas; j++)
+            {
+                if chutes[j] == palavra_secreta[i])
+                    {
+                        achou = 1;
+                        break;
+                    }
+            }
+
+            if (achou)
+            {
+                printf("%c", palavra_secreta[i]);
+            }
+
+            else
+            {
+                printf("_ ");
             }
         }
 
-    } while(!acertou && !enforcou);
+        printf("\n");
+
+        char chute;
+        scanf(" %c", &chute);
+
+    } while (!acertou && !enforcou);
 }
