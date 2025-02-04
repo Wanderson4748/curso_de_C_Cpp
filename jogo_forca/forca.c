@@ -21,18 +21,22 @@ int main()
 
             int achou = 0;
 
+            printf("Estou vendo a letra secreta %d = %c\n", i, palavra_secreta[i]);
+
             for (int j = 0; j < tentativas; j++)
             {
-                if chutes[j] == palavra_secreta[i])
-                    {
-                        achou = 1;
-                        break;
-                    }
+                printf("-> Chute %d = %c\n", j, chutes[j]);
+                if (chutes[j] == palavra_secreta[i])
+                {
+                    printf("---> CHUTE CORRETO!\n");
+                    achou = 1;
+                    break;
+                }
             }
 
             if (achou)
             {
-                printf("%c", palavra_secreta[i]);
+                printf("%c ", palavra_secreta[i]);
             }
 
             else
@@ -45,6 +49,9 @@ int main()
 
         char chute;
         scanf(" %c", &chute);
+
+        chutes[tentativas] = chute;
+        tentativas++;
 
     } while (!acertou && !enforcou);
 }
