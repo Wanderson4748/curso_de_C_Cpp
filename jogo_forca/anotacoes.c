@@ -1,3 +1,37 @@
+/*
+
+--> Decimal vs Binário
+
+Decimal:     Binário:
+0            0
+1            1
+2            10
+3            11
+4            100
+5            (1)01 [O numero 1, entre paranteses
+             significa um BIT]
+
+--> BIT VS BYTE
+
+BIT: É a nomenclatura dos 0 e 1 dos binários
+
+BYTE: Conjunto de 8 Bits
+10000000 = 1 Byte
+
+--> HEXADECIMAL
+0 1 2 3 4 5 6 7 8 9
+A B C D E F
+----16 BITS--------
+FF = 1 byte
+
+    R      G       B
+ 0 a 256 0 a 256 0 a 256
+    FF     OO      3A
+
+
+*/
+
+// Versões de codigo
 /* #include <stdio.h>
 
 int main()
