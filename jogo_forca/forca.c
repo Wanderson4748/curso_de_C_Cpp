@@ -1,5 +1,11 @@
 #include <stdio.h>
 #include <string.h>
+#include "forca.h"
+
+// variaveis globais
+char palavra_secreta[20];
+char chutes[26];
+int chutes_dados = 0;
 
 void abertura() {
     printf("**********************\n");
@@ -7,20 +13,20 @@ void abertura() {
     printf("**********************\n\n");
 }
 
-void chuta(char chutes[26], int* tentativas) {
+void chuta() {
 
     char chute;
     scanf(" %c", &chute);
 
-    chutes[(*tentativas)] = chute;
-    (*tentativas)++;
+    chutes[chutes_dados] = chute;
+    (chutes_dados)++;
 }
 
-int ja_chutou (char letra, char chutes[26], int tentativas) {
+int ja_chutou (char letra) { 
 
     int achou = 0;
 
-    for(int j = 0; j < tentativas; j++) {
+    for(int j = 0; j < chutes_dados; j++) {
         if(chutes[j] == letra) {
             achou = 1;
             break;
@@ -29,38 +35,68 @@ int ja_chutou (char letra, char chutes[26], int tentativas) {
     return achou;
 }
 
-int main() {
+void desenha_forca() {
 
-    char palavra_secreta[20];
+    for (int i = 0; i < strlen(palavra_secreta); i++) {
+
+        int achou = ja_chutou(palavra_secreta[i]);
+
+        if (achou) {
+            printf("%c ", palavra_secreta[i]);
+        }
+
+        else {
+            printf("_ ");
+        }
+    }
+    
+    printf("\n");
+
+}
+void escolhe_palavra() {
 
     sprintf(palavra_secreta, "MELANCIA");
 
-    int acertou = 0;
-    int enforcou = 0;
+}
 
-    char chutes[26];
-    int tentativas = 0;
+int acertou() {
 
+    for(int i = 0; i < strlen(palavra_secreta); i++) {
+        if(!ja_chutou(palavra_secreta[i])) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int enforcou() {
+
+    int erros = 0;
+    for(int i = 0; i < chutes_dados; i++) {
+        
+        int existe = 0;
+
+        for(int j = 0; j < strlen(palavra_secreta); j++) {
+            if(chutes[i] == palavra_secreta[j]) {
+
+                existe = 1;
+                break;
+            }
+        }
+        if(!existe) erros++;
+    }
+    return erros >= 5;
+}
+
+int main() {
+
+    escolhe_palavra(palavra_secreta);
     abertura();
 
     do {
-        // imprime a palavra secreta
-        for (int i = 0; i < strlen(palavra_secreta); i++) {
-
-            int achou = ja_chutou(palavra_secreta[i], chutes, tentativas);
-
-            if (achou) {
-                printf("%c ", palavra_secreta[i]);
-            }
-
-            else {
-                printf("_ ");
-            }
-        }
         
-        printf("\n");
+        desenha_forca();
+        chuta();
         
-        chuta(chutes, &tentativas);
-
-    } while (!acertou && !enforcou);
+    } while (!acertou() && !enforcou());
 }
