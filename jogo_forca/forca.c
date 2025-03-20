@@ -92,7 +92,7 @@ void escolhe_palavra() {
     f = fopen("palavras.txt", "r");
     if(f == 0) {
         printf("Desculpe, banco de dados nao disponivel\n\n");
-        exit(1);  
+        exit(1);
     }
     
     int qtd_de_palavras;
